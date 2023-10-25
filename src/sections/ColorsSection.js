@@ -1,7 +1,9 @@
 import { useGLTF } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import gsap from "gsap"; // Make sure to import gsap from the correct path
-import React, { useLayoutEffect, useRef } from "react";
+import React, { Suspense, useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
+import Model2 from "../compenents/Scene2";
 
 const Section = styled.section`
   width: 100vw;
@@ -124,7 +126,15 @@ const ColorsSection = () => {
     <Section ref={sectionRef}>
       <Left ref={leftRef}></Left>
       <Center ref={textRef}></Center>
-      <Right ref={rightRef}></Right>
+      <Right ref={rightRef}>
+        <Canvas camera={{ fov: 6.5 }}>
+          <ambientLight intensity={1.25} />
+          <directionalLight intensity={0.4} />
+          <Suspense fallback={null}>
+            <Model2 />
+          </Suspense>
+        </Canvas>
+      </Right>
     </Section>
   );
 };
