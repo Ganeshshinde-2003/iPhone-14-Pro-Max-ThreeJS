@@ -1,3 +1,4 @@
+import { useGLTF } from "@react-three/drei";
 import gsap from "gsap"; // Make sure to import gsap from the correct path
 import React, { useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
@@ -40,6 +41,8 @@ const ColorsSection = () => {
   const leftRef = useRef(null);
   const textRef = useRef(null);
 
+  const { materials } = useGLTF("/scene.gltf");
+
   useLayoutEffect(() => {
     let Elem = sectionRef.current;
     let rightElem = rightRef.current;
@@ -47,6 +50,8 @@ const ColorsSection = () => {
     let textElem = textRef.current;
 
     let updateColor = (color, text, rgbColor) => {
+      materials.Body.color.set(color);
+
       textElem.innerText = text;
       textElem.style.color = color;
       rightElem.style.backgroundColor = `rgba(${rgbColor}, 0.4)`;
@@ -113,12 +118,12 @@ const ColorsSection = () => {
     return () => {
       // if (t2) t2.kill();
     };
-  }, []);
+  }, [materials.Body.color]);
 
   return (
     <Section ref={sectionRef}>
       <Left ref={leftRef}></Left>
-      <Center ref={textRef}>Sierra Blue</Center>
+      <Center ref={textRef}></Center>
       <Right ref={rightRef}></Right>
     </Section>
   );
