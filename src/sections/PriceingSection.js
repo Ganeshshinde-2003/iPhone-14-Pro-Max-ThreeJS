@@ -1,14 +1,14 @@
-import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import Model3 from "../compenents/Scene3";
-import {
-  AdaptiveDpr,
-  AdaptiveEvents,
-  Environment,
-  OrbitControls,
-  useGLTF,
-} from "@react-three/drei";
+import { AdaptiveDpr, AdaptiveEvents, Environment } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
+import { useRef } from "react";
+import { useContext } from "react";
+import { ColorContext } from "./../context/ColorContext";
+import { useEffect } from "react";
 
 const Container = styled.div`
   width: 100vw;
@@ -39,6 +39,7 @@ const Phone = styled.div`
   position: relative;
   cursor: grab;
 `;
+
 const Colors = styled.ul`
   display: flex;
   flex-direction: column;
@@ -128,22 +129,24 @@ const IndicatorText = styled.div`
   top: 1rem;
 `;
 
-const PriceingSection = () => {
+const PricingSection = () => {
   const sectionRef = useRef(null);
 
-  const { materials } = useGLTF("/scene.gltf");
+  const { currentColor, changeColorContext } = useContext(ColorContext);
 
-  //   const { currentColor, changeColorContext } = useContext(ColorContext);
-
-  //   useEffect(() => {
-  //     sectionRef.current.style.backgroundColor = `rgba(${currentColor.rgbColor},0.4)`;
-  //   }, [currentColor]);
+  useEffect(() => {
+    sectionRef.current.style.backgroundColor = `rgba(${currentColor.rgbColor},0.4)`;
+  }, [currentColor]);
 
   let updateColor = (color, text, rgbColor) => {
-    materials.Body.color.set(color);
-    sectionRef.current.style.backgroundColor = `rgba(${rgbColor},0.4)`;
-    // changeColorContext(colorObj);
+    const colorObj = {
+      color,
+      text,
+      rgbColor,
+    };
+    changeColorContext(colorObj);
   };
+
   return (
     <Container>
       <Section ref={sectionRef}>
@@ -195,6 +198,7 @@ const PriceingSection = () => {
             />
           </Colors>
         </Phone>
+
         <Details>
           <SubTitle>iPhone</SubTitle>
           <Title>14 Pro Max</Title>
@@ -209,4 +213,4 @@ const PriceingSection = () => {
   );
 };
 
-export default PriceingSection;
+export default PricingSection;
