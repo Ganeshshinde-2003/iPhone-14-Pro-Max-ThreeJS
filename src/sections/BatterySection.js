@@ -6,20 +6,38 @@ const Section = styled.section`
   width: 100vw;
   height: 100vh;
   position: relative;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
   background-color: var(--white);
 `;
+
 const Title = styled.h1`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-55%, -50%);
-  text-transform: uppercase;
+
+  text-transform: capitalize;
   font-size: var(--fontBig);
   z-index: 1;
+
+  @media screen and (max-width: 70em) {
+    font-size: var(--fontxxxl);
+  }
+  @media screen and (max-width: 64em) {
+    font-size: var(--fontxxl);
+  }
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontlg);
+    transform: none;
+    left: 2rem;
+    top: 2rem;
+    width: 50%;
+  }
 `;
+
 const Battery = styled.ul`
   position: absolute;
   right: 4rem;
@@ -29,6 +47,7 @@ const Battery = styled.ul`
   border-radius: 8px;
   padding: 0.5rem;
   width: 15rem;
+
   li {
     width: 100%;
     height: 5rem;
@@ -36,8 +55,15 @@ const Battery = styled.ul`
     background-image: linear-gradient(-90deg, var(--gradient));
     opacity: 0;
   }
+
   & > *:not(:first-child):not(:last-child) {
     margin: 0.5rem 0;
+  }
+
+  @media screen and (max-width: 48em) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 

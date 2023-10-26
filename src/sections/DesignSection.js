@@ -6,10 +6,12 @@ const Section = styled.section`
   width: 100vw;
   height: 100vh;
   position: relative;
+
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+
   background-color: var(--white);
   overflow: hidden;
 `;
@@ -17,32 +19,69 @@ const TextContainer = styled.p`
   width: 100%;
   height: 50vh;
   z-index: 1;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   color: var(--dark);
+
   span {
     font-size: var(--fontBig);
     width: 90%;
     font-weight: 600;
     text-transform: capitalize;
   }
+
+  @media screen and (max-width: 70em) {
+    span {
+      font-size: var(--fontxxxl);
+    }
+  }
+  @media screen and (max-width: 64em) {
+    span {
+      font-size: var(--fontxxl);
+    }
+  }
+  @media screen and (max-width: 48em) {
+    span {
+      font-size: var(--fontlg);
+    }
+  }
 `;
 const TextContainer2 = styled.p`
   width: 100%;
   height: 50vh;
-  z-index: 1;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   color: var(--dark);
+
   span {
     font-size: var(--fontxxxl);
     width: 80%;
     font-weight: 600;
     text-transform: capitalize;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  @media screen and (max-width: 70em) {
+    span {
+      font-size: var(--fontxxl);
+    }
+  }
+  @media screen and (max-width: 64em) {
+    span {
+      font-size: var(--fontxl);
+    }
+  }
+  @media screen and (max-width: 48em) {
+    span {
+      font-size: var(--fontlg);
+    }
   }
 `;
 

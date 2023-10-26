@@ -6,28 +6,54 @@ const Section = styled.section`
   width: 100vw;
   height: 200vh;
   position: relative;
+
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+
   background-color: var(--dark);
   color: var(--white);
+
   & > *:nth-child(even) {
     align-self: flex-end;
     margin-right: 4rem;
     text-align: right;
+
+    @media screen and (max-width: 48em) {
+      margin-right: 1rem;
+    }
   }
   & > *:nth-child(odd) {
     margin-left: 4rem;
+
+    @media screen and (max-width: 48em) {
+      margin-left: 1rem;
+    }
   }
 `;
-const MainTitle = styled.p`
+const MainTitle = styled.h1`
   font-size: var(--fontBig);
   font-family: var(--fontL);
+
   background-image: linear-gradient(-45deg, var(--gradient));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media screen and (max-width: 70em) {
+    font-size: var(--fontxxxl);
+  }
+  @media screen and (max-width: 64em) {
+    font-size: var(--fontxxl);
+  }
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontxl);
+  }
+  @media screen and (max-width: 40em) {
+    font-size: var(--fontlg);
+  }
 `;
+
 const TextBlockRight = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,33 +66,65 @@ const TextBlockLeft = styled.div`
   align-items: flex-start;
   width: 50%;
 `;
+
 const Title = styled.div`
   font-size: var(--fontlg);
   margin-bottom: 1rem;
+
+  @media screen and (max-width: 64em) {
+    font-size: var(--fontmd);
+  }
 `;
+
 const Text = styled.div`
   font-size: var(--fontxs);
-  color: var(--grayLight);
-  mix-blend-mode: 0.5rem;
+  color: var(--greyLight);
+  margin-bottom: 0.5rem;
   width: 55%;
+
+  @media screen and (max-width: 64em) {
+    width: 70%;
+  }
+  @media screen and (max-width: 48em) {
+    width: 100%;
+    font-size: var(--fontxxs);
+  }
 `;
 const TextContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   transform: rotate(-25deg);
   z-index: 1;
   margin-bottom: 4rem;
-  align-items: center;
 `;
+
 const MovingText = styled.h1`
   font-size: var(--fontBig);
   font-family: var(--fontL);
+
   background-image: linear-gradient(-45deg, var(--gradient));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media screen and (max-width: 70em) {
+    font-size: var(--fontxxxl);
+  }
+  @media screen and (max-width: 64em) {
+    font-size: var(--fontxxl);
+  }
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontxl);
+  }
+  @media screen and (max-width: 40em) {
+    font-size: var(--fontlg);
+  }
+  @media screen and (max-width: 30em) {
+    font-size: var(--fontmd);
+  }
 `;
 
 const DisplaySection = () => {

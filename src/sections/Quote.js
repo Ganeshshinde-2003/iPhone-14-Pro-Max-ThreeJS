@@ -45,17 +45,34 @@ const Text = styled.p`
     animation-duration: 2.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-    font-family: var(--fontL);
     animation-delay: ${(props) => props.delay};
+    font-family: var(--fontL);
     background-image: linear-gradient(-45deg, var(--gradient));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
   .author {
     width: 100%;
-    text-align: right;
+    text-align: end;
     background-image: linear-gradient(-180deg, var(--gradient));
+    font-family: var(--fontR);
+  }
+
+  @media screen and (max-width: 70em) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 48em) {
+    font-size: var(--fontmd);
+    height: var(--fontsm);
+  }
+  @media screen and (max-width: 40em) {
+    width: 90%;
+  }
+  @media screen and (max-width: 30em) {
+    font-size: var(--fontxs);
   }
 `;
 
